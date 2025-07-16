@@ -7,21 +7,22 @@ RUN_XTERM=${RUN_XTERM:-yes}
 # Setup VNC password
 mkdir -p ~/.vnc
 
-# Set read-write password
+
 if [[ -n "$VNC_PASSWORD" ]]; then
   x11vnc -storepasswd "$VNC_PASSWORD" ~/.vnc/passwd
+  chmod 600 ~/.vnc/passwd
 fi
 
 
 if [[ "$VNC_PASSWORD_VIEWONLY" == "" ]]; then
-  echo "" | x11vnc -storepasswd - ~/.vnc/viewonly.pass || true
+  echo "">~/.vnc/viewonly.pass
   chmod 600 ~/.vnc/viewonly.pass
 else
   x11vnc -storepasswd "$VNC_PASSWORD_VIEWONLY" ~/.vnc/viewonly.pass
   chmod 600 ~/.vnc/viewonly.pass
 fi
 
-chmod 600 ~/.vnc/passwd
+
 
 
 case $RUN_FLUXBOX in
