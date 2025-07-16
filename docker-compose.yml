@@ -15,6 +15,10 @@ services:
       # Adjust to your screen size
       - DISPLAY_WIDTH=1600
       - DISPLAY_HEIGHT=968
+      - VNC_PASSWORD_VIEWONLY="view"
+      - VNC_PASSWORD="admin"
+      - RUN_XTERM="yes"
+      - RUN_FLUXBOX="yes"
     ports:
       - "8080:8080"
     networks:
