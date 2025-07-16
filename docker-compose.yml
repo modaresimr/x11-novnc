@@ -21,6 +21,7 @@ services:
       - RUN_FLUXBOX="yes"
     ports:
       - "8080:8080"
+      - "8081:8081" #viewonly
     networks:
       - x11
 networks:
