@@ -15,8 +15,7 @@ fi
 
 
 if [[ "$VNC_PASSWORD_VIEWONLY" == "" ]]; then
-  echo "">~/.vnc/viewonly.pass
-  chmod 600 ~/.vnc/viewonly.pass
+  sed -i 's#-rfbauth /root/.vnc/viewonly.pass##' /app/conf.d/x11vnc.conf
 else
   x11vnc -storepasswd "$VNC_PASSWORD_VIEWONLY" ~/.vnc/viewonly.pass
   chmod 600 ~/.vnc/viewonly.pass
