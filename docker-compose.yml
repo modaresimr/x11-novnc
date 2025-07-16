@@ -17,8 +17,8 @@ services:
       - DISPLAY_HEIGHT=968
       - VNC_PASSWORD_VIEWONLY=
       - VNC_PASSWORD=admin
-      - RUN_XTERM="yes"
-      - RUN_FLUXBOX="yes"
+      - RUN_XTERM=yes
+      - RUN_FLUXBOX=yes
     ports:
       - "8080:8080"
       - "8081:8081" #viewonly
