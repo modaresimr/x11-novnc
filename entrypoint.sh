@@ -15,17 +15,14 @@ fi
 
 if [[ "$VNC_PASSWORD_VIEWONLY" == "" ]]; then
   echo "" | x11vnc -storepasswd - ~/.vnc/viewonly.pass || true
+  chmod 600 ~/.vnc/viewonly.pass
 else
   x11vnc -storepasswd "$VNC_PASSWORD_VIEWONLY" ~/.vnc/viewonly.pass
-fi
-
-# Merge passwords (x11vnc expects both in a single file)
-if [[ -f ~/.vnc/passwd && -f ~/.vnc/viewonly.pass ]]; then
-  cat ~/.vnc/viewonly.pass >> ~/.vnc/passwd
+  chmod 600 ~/.vnc/viewonly.pass
 fi
 
 chmod 600 ~/.vnc/passwd
-rm -f ~/.vnc/viewonly.pass
+
 
 case $RUN_FLUXBOX in
   false|no|n|0)
